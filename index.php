@@ -47,10 +47,10 @@ $pagination_url = '?' . $query_string . ($query_string ? '&' : '') . 'page=';
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Todo List</a>
+            <a class="navbar-brand" href="#">Todolist</a>
             <div class="navbar-nav ms-auto">
-                <span class="nav-item nav-link text-light">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
-                <a class="nav-link" href="logout.php">Logout</a>
+                <span class="nav-item nav-link text-light">Xin chào, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                <a class="nav-link" href="logout.php">Đăng xuất</a>
             </div>
         </div>
     </nav>
@@ -62,14 +62,14 @@ $pagination_url = '?' . $query_string . ($query_string ? '&' : '') . 'page=';
                     <input type="text" name="search" class="form-control" placeholder="Search todos..." value="<?php echo htmlspecialchars($search); ?>">
                     <select name="status" class="form-select" style="width: auto;">
                         <option value="">All Status</option>
-                        <option value="pending" <?php echo $status === 'pending' ? 'selected' : ''; ?>>Pending</option>
-                        <option value="completed" <?php echo $status === 'completed' ? 'selected' : ''; ?>>Completed</option>
+                        <option value="pending" <?php echo $status === 'pending' ? 'selected' : ''; ?>>Chưa xong</option>
+                        <option value="completed" <?php echo $status === 'completed' ? 'selected' : ''; ?>>Hoàn thành</option>
                     </select>
                     <select name="priority" class="form-select" style="width: auto;">
-                        <option value="">All Priority</option>
-                        <option value="low" <?php echo $priority === 'low' ? 'selected' : ''; ?>>Low</option>
-                        <option value="medium" <?php echo $priority === 'medium' ? 'selected' : ''; ?>>Medium</option>
-                        <option value="high" <?php echo $priority === 'high' ? 'selected' : ''; ?>>High</option>
+                        <option value="">Quan trọng</option>
+                        <option value="low" <?php echo $priority === 'low' ? 'selected' : ''; ?>>Bình thường</option>
+                        <option value="medium" <?php echo $priority === 'medium' ? 'selected' : ''; ?>>Tương đối quan trọng</option>
+                        <option value="high" <?php echo $priority === 'high' ? 'selected' : ''; ?>>Quan trọng</option>
                     </select>
                     <input type="date" name="due_date" class="form-control" style="width: auto;" value="<?php echo htmlspecialchars($due_date); ?>">
                     <button type="submit" class="btn btn-primary">Filter</button>
@@ -77,7 +77,7 @@ $pagination_url = '?' . $query_string . ($query_string ? '&' : '') . 'page=';
             </div>
             <div class="col-md-4 text-end">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addTodoModal">
-                    <i class="fas fa-plus"></i> Add Todo
+                    <i class="fas fa-plus"></i> Thêm công việc
                 </button>
             </div>
         </div>
@@ -99,7 +99,7 @@ $pagination_url = '?' . $query_string . ($query_string ? '&' : '') . 'page=';
                         </div>
                         <?php if ($item['due_date']): ?>
                         <div class="mt-2">
-                            <small class="text-muted">Date: <?php echo date('Y-m-d', strtotime($item['due_date'])); ?></small>
+                            <small class="text-muted">Ngày hết hạn: <?php echo date('Y-m-d', strtotime($item['due_date'])); ?></small>
                         </div>
                         <?php endif; ?>
                         <div class="mt-3">
@@ -134,36 +134,36 @@ $pagination_url = '?' . $query_string . ($query_string ? '&' : '') . 'page=';
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add New Todo</h5>
+                    <h5 class="modal-title">Thêm công việc mới</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <form id="addTodoForm">
                         <div class="mb-3">
-                            <label class="form-label">Title</label>
+                            <label class="form-label">Tiêu đề</label>
                             <input type="text" class="form-control" name="title" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Description</label>
+                            <label class="form-label">Mô tả công việc</label>
                             <textarea class="form-control" name="description" rows="3"></textarea>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Priority</label>
+                            <label class="form-label">Mức độ quan trọng</label>
                             <select class="form-select" name="priority" required>
-                                <option value="low">Low</option>
-                                <option value="medium">Medium</option>
-                                <option value="high">High</option>
+                                <option value="low">Ổn</option>
+                                <option value="medium">Tương đối quan trọng</option>
+                                <option value="high">Quan trọng</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Due Date</label>
+                            <label class="form-label">Ngày hết hạn</label>
                             <input type="date" class="form-control" name="due_date">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="addTodo()">Add Todo</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+                    <button type="button" class="btn btn-primary" onclick="addTodo()">Thêm công việc</button>
                 </div>
             </div>
         </div>

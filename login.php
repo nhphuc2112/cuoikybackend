@@ -30,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
             
             if ($auth->register($username, $password, $email)) {
-                $error = 'Registration successful! Please login.';
+                $error = 'Đăng ký thành công!.';
             } else {
-                $error = 'Registration failed. Username or email might already exist.';
+                $error = 'Đăng ký thất bại. Username hoặc email đã tồn tại.';
             }
         }
     }
@@ -55,10 +55,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#login">Login</a>
+                                <a class="nav-link active" data-bs-toggle="tab" href="#login">Đăng nhập</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#register">Register</a>
+                                <a class="nav-link" data-bs-toggle="tab" href="#register">Đăng ký</a>
                             </li>
                         </ul>
                     </div>
@@ -72,21 +72,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <form method="POST">
                                     <input type="hidden" name="action" value="login">
                                     <div class="mb-3">
-                                        <label class="form-label">Username</label>
+                                        <label class="form-label">Tài khoản</label>
                                         <input type="text" class="form-control" name="username" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Password</label>
+                                        <label class="form-label">Mật khẩu</label>
                                         <input type="password" class="form-control" name="password" required>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Login</button>
+                                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
                                 </form>
                             </div>
                             <div class="tab-pane fade" id="register">
                                 <form method="POST">
                                     <input type="hidden" name="action" value="register">
                                     <div class="mb-3">
-                                        <label class="form-label">Username</label>
+                                        <label class="form-label">Tài khoản</label>
                                         <input type="text" class="form-control" name="username" required>
                                     </div>
                                     <div class="mb-3">
@@ -94,10 +94,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         <input type="email" class="form-control" name="email" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Password</label>
+                                        <label class="form-label">Mật khẩu</label>
                                         <input type="password" class="form-control" name="password" required>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Register</button>
+                                    <button type="submit" class="btn btn-primary">Đăng ký</button>
                                 </form>
                             </div>
                         </div>
